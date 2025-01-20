@@ -1,0 +1,1 @@
+let Student = require('./student')

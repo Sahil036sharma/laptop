@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .toggle-btn {
+            display: inline-block;
+            border-radius: 25px;
+            border: 2px solid #000;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .toggle-btn button {
+            border: none;
+            outline: none;
+            padding: 10px 30px;
+            cursor: pointer;
+            background-color: #fff;
+            color: black;
+            font-size: 16px;
+        }
+
+        .toggle-btn button.active {
+            background-color: green;
+            color: white;
+        }
+
+        .toggle-btn button:first-child {
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+        }
+
+        .toggle-btn button:last-child {
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+        }
+
+        .toggle-btn button:hover {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-header">
+                <button class="toggle-btn active" onclick="showLogin()">Login</button>
+                <button class="toggle-btn" onclick="showSignup()">Sign Up</button>
+            </div>
+            <div id="login-form" class="form-content active">
+                <div class="input-wrapper">
+                    <label>
+                        <span><b>Email</b></span>
+                        <input type="email" id="login-email" placeholder="Enter your email" required>
+                        <i class="fas fa-envelope"></i>
+                    </label>
+                </div>
+                <div class="input-wrapper">
+                    <label>
+                        <span><b>Password</b></span>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                        <i class="fas fa-lock"></i>
+                    </label>
+                </div>
+                <p class="forgot-pass" onclick="showForgotPasswordModal()"><b>Forgot password?</b></p>
+                <button type="button" class="submit" onclick="validateLogin()">Login</button>
+            </div>
+            <div id="signup-form" class="form-content">
+                <div class="input-wrapper">
+                    <label>
+                        <span><b>Name</b></span>
+                        <input type="text" placeholder="Enter your name" required>
+                        <i class="fas fa-user"></i>
+                    </label>
+                </div>
+                <div class="input-wrapper">
+                    <label>
+                        <span><b>Email</b></span>
+                        <input type="email" id="signup-email" placeholder="Enter your email" required>
+                        <i class="fas fa-envelope"></i>
+                    </label>
+                </div>
+                <div class="input-wrapper">
+                    <label>
+                        <span><b>Password</b></span>
+                        <input type="password" id="signup-password" placeholder="Create a password" required>
+                        <i class="fas fa-lock"></i>
+                    </label>
+                </div>
+                <button type="button" class="submit" onclick="validateSignup()">Sign Up</button>
+            </div>
+            <div class="social-login">
+                <p>Or sign in with:</p>
+                <a href="https://www.google.com" target="_blank" class="social-btn google-btn"><i class="fab fa-google"></i> Google</a>
+                <a href="https://www.twitter.com" target="_blank" class="social-btn twitter-btn"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="https://www.github.com" target="_blank" class="social-btn github-btn"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+    </div>
+
+   
+    <div id="forgot-password-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeForgotPasswordModal()">&times;</span>
+            <h2><b>Reset Password</b></h2>
+            <label>
+                <span>Email</span>
+                <input type="email" placeholder="Enter your email" required>
+            </label>
+            <button type="button" class="submit" onclick="resetPassword()">Reset Password</button>
+        </div>
+    </div>
+
+    <script>
+     
+        function showLogin() {
+            document.getElementById('login-form').classList.add('active');
+            document.getElementById('signup-form').classList.remove('active');
+            document.querySelector('.toggle-btn:nth-child(1)').classList.add('active');
+            document.querySelector('.toggle-btn:nth-child(2)').classList.remove('active');
+        }
+
+  
+        function showSignup() {
+            document.getElementById('signup-form').classList.add('active');
+            document.getElementById('login-form').classList.remove('active');
+            document.querySelector('.toggle-btn:nth-child(1)').classList.remove('active');
+            document.querySelector('.toggle-btn:nth-child(2)').classList.add('active');
+        }
+
+    
+        function showForgotPasswordModal() {
+            document.getElementById('forgot-password-modal').style.display = 'flex';
+        }
+
+       
+        function closeForgotPasswordModal() {
+            document.getElementById('forgot-password-modal').style.display = 'none';
+        }
+
+        
+        function validateLogin() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            if (email === '' || password === '') {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            if (!validateEmail(email)) {
+                alert('Please enter a valid email.');
+                return;
+            }
+
+        
+            window.location.href = "main.html";
+        }
+
+        function validateSignup() {
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+
+            if (!validateEmail(email)) {
+                alert('Please enter a valid email with an "@" symbol.');
+                return;
+            }
+
+            if (!validatePassword(password)) {
+                alert('Password must be at least 8 characters long and include both letters and numbers.');
+                return;
+            }
+
+            alert('Signup successful!');
+            window.location.href = "loginsignup.html";
+        }
+
+        function validateEmail(email) {
+            return email.includes('@');
+        }
+
+        function validatePassword(password) {
+            const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+            return passwordRegex.test(password);
+        }
+
+ 
+        function resetPassword() {
+            alert('Password reset link sent!');
+            closeForgotPasswordModal();
+        }
+    </script>
+</body>
+</html>

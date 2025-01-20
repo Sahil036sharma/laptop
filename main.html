@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Window</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: block;
+        }
+
+        .container {
+            background-color: #4CAF50;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 30px auto;
+            color: white;
+            position: relative;
+
+        }
+
+        .profile-circle {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 50%;
+            border: 3px solid white;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            cursor: pointer;
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-circle:hover {
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .profilebutton,
+        .edit-button {
+            background-color: white;
+            color: #4CAF50;
+            border: 2px solid #4CAF50;
+            padding: 5px 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .profilebutton:hover,
+        .edit-button:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .contain {
+            padding: 20px;
+            margin: 0px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #4CAF50;
+            float: left;
+        }
+
+        .contain ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contain li {
+            margin: 10px 0;
+        }
+
+        .contain button {
+            width: 100%;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            text-align: left;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .contain button:hover {
+            background-color: whitesmoke;
+            color: #4CAF50;
+        }
+
+        /*table css*/
+        .model h2 {
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .model {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .model table {
+            width: 70%;
+            margin: 5% auto;
+            border-collapse: collapse;
+            background: white;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+         
+
+        table,
+        th,
+        td {
+            border: 1px solid #4CAF50;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+        }
+
+        .profile_detail {
+            background-color: white;
+            border-radius: 15px;
+            width: 600px;
+            margin: auto;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h2 {
+            background-color: #4CAF50;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: center;
+            display: block;
+            font-weight: bold;
+            color: white;
+            border-radius: 50px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+
+        }
+
+        td {
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td span {
+            font-weight: normal;
+            color: #555;
+        }
+
+        .profile_img {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .profile_img img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 2px solid #4CAF50;
+
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .close:hover {
+            color: red;
+        }
+
+       
+.model {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+
+.model-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; 
+    border-radius: 8px;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Input Fields */
+#editProfileForm label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+#editProfileForm input[type="text"],
+#editProfileForm input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#editProfileForm button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#editProfileForm button:hover {
+    background-color: #45a049;
+}
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="profile-circle" onclick="toggleDropdown()">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCA5xl6NzSgdIa4cqsFYRciby2bJ5JTYTXD7YU1fgBUFDvKYEAWEStcJSWjBaIApD9MjY&usqp=CAU"
+                alt="Profile">
+        </div>
+        <h2>Student Details</h2>
+        <div>
+            <button class="profilebutton" onclick="showprofile()">Profile</button>
+            <button class="profile-btn" onclick="openEditProfile()">Edit Profile</button>
+        </div>
+    </div>
+
+    <div class="contain">
+        <ul>
+            <li><button onclick="showdashboard('Dashboard')">Dashboard</button></li>
+            <li><button onclick="navigateTo('feedback')">Feedback</button></li>
+            <li><button onclick="navigateTo('Fees')">Fees</button></li>
+            <li><button onclick="navigateTo('Course')">Course</button></li>
+            <li><button onclick="navigateTo('assessment')">Assessment</button></li>
+            <li><button onclick="showTimetable()">Time Table</button></li>
+            <li><button onclick="navigateTo('Quiz')">Quiz</button></li>
+            <li><button onclick="navigateTo('Result')">Result</button></li>
+        </ul>
+    </div>
+    <div id="timetable" class="model">
+        <span class="close" onclick="closeTimetable()">&times;</span>
+        <h2> BCA 5th sem Time Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Period/Day </th>
+                    <th>Monday</th>
+                    <th>Tuseday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1
+                        9:20-10:10
+                    </td>
+                    <td></td>
+                    <td>BCA
+                        (Communication Skills - V-SE3503)
+                        Skill Enhancement(Soft Skills/ Aptitude)
+                        Block C(F1_203)
+                        Ms. Vandana Singh</td>
+
+                    <td>BCA
+                        (Data Structures & Algorithm Lab-CA3541/ CA3343)
+                        Core(Practical)
+                        Block C(GTH II)
+                        Mr. Md Rafeeq</td>
+                    <td>
+
+                    </td>
+                    <td>BCA
+                        (Back End Development Lab-CA3540)
+                        Core(Practical)
+                        Block C(GTH II)
+                        Mr.Shubham</td>
+
+                    <td>Data Visualization
+                        (Data Analyst - Black Belt-VS3543)
+                        Skill Enhancement(Vocational Skills)
+                        Block C(GTH II)
+                        Ms. Prachi</td>
+                </tr>
+
+                <tr>
+                    <td>2. 10:00-11;00</td>
+                    <td> </td>
+                    <td>BCA
+                        (Communication Skills - V-SE3503)
+                        Skill Enhancement(Soft Skills/ Aptitude)
+                        Block C(F1_203)
+                        Ms. Vandana Singh</td>
+                    <td>BCA
+                        (Data Structures & Algorithm Lab-CA3541/ CA3343)
+                        Core(Practical)
+                        Block C(GTH II)
+                        Mr. Md Rafeeq</td>
+                    <td></td>
+                    <td>BCA
+                        (Back End Development Lab-CA3540)
+                        Core(Practical)
+                        Block C(GTH II)
+                        Mr.Shubham</td>
+
+                    <td>Data Visualization
+                        (Data Analyst - Black Belt-VS3543)
+                        Skill Enhancement(Vocational Skills)
+                        Block C(GTH II)
+                        Ms. Prachi</td>
+                </tr>
+
+                <tr>
+                    <td>3. 11:00-11:50</td>
+                    <td></td>
+                    <td></td>
+                    <td>BCA
+                        (Minor Project-I-CA3570)
+                        Core Elective(Practical)
+                        Block C(GTH I)
+                        Ms. Aarti .</td>
+                    <td>BCA
+                        (Back End Development Lab-CA3540)
+                        Core(Practical)
+                        Block C(F2_305,306)
+                        Mr.Shubham</td>
+                    <td></td>
+                    <td>Data Visualization
+                        (Data Analyst - Black Belt-VS3543)
+                        Skill Enhancement(Vocational Skills)
+                        Block C(GTH II)
+                        Ms. Prachi</td>
+                </tr>
+
+                <tr>
+                    <td>4. 11:50-12:40</td>
+                    <td></td>
+                    <td></td>
+                    <td>BCA
+                        (Minor Project-I-CA3570)
+                        Core Elective(Practical)
+                        Block C(GTH I)
+                        Ms. Aarti .</td>
+                    <td>BCA
+                        (Back End Development Lab-CA3540)
+                        Core(Practical)
+                        Block C(F2_305,306)
+                        Mr.Shubham</td>
+                    <td>BCA
+                        (Data Structures & Algorithm-CA3502/ CA3304)
+                        Core(Theory)
+                        Block C(F1_204)
+                        Mr. Md Rafeeq</td>
+
+                    <td> </td>
+                </tr>
+
+                <tr>
+                    <td>5. 12:40-1:30</td>
+                    <td colspan="6" align="center" >LUNCH</td>
+                </tr>
+                <tr>
+                    <td>6. 1:30-2:20</td>
+                    <td> </td>
+                    <td> </td>
+                    <td></td>
+                    <td>BCA
+                        (Data Structures & Algorithm Lab-CA3541/ CA3343)
+                        Core(Practical)
+                        Block C(F2_305,306)
+                        Mr. Md Rafeeq</td>
+                    <td>BCA
+                        (Data Structures & Algorithm-CA3502/ CA3304)
+                        Core(Theory)
+                        Block C(F1_202)
+                        Mr. Md Rafeeq</td>
+                    <td>BCA
+                        (Data Structures & Algorithm-CA3502/ CA3304)
+                        Core(Theory)
+                        Block C(F1_204)
+                        Mr. Md Rafeeq</td>
+                </tr>
+                <tr>
+                    <td>7. 2:20-3:10</td>
+                    <td></td>
+                    <td>BCA
+                        (Communication Skills - V-SE3503)
+                        Skill Enhancement(Soft Skills/ Aptitude)
+                        Block C(F1_203)
+                        Ms. Vandana Singh</td>
+
+                    <td></td>
+                    <td>BCA
+                        (Data Structures & Algorithm Lab-CA3541/ CA3343)
+                        Core(Practical)
+                        Block C(F2_305,306)
+                        Mr. Md Rafeeq</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>8.3:10-4:00</td>
+                    <td></td>
+                    <td>BCA
+                        (Communication Skills - V-SE3503)
+                        Skill Enhancement(Soft Skills/ Aptitude)
+                        Block C(F1_203)
+                        Ms. Vandana Singh</td>
+
+                    <td></td>
+                    <td>BCA
+                        (Back End Development-CA3501)
+                        Core(Theory)
+                        Block C(F1_204)
+                        Mr.Shubham</td>
+                    <td></td>
+                    <td>BCA
+                        (Back End Development-CA3501)
+                        Core(Theory)
+                        Block C(F1_206)
+                        Mr.Shubham</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div id="profile" class="model">
+        <span class="close" onclick="closeProfile()">&times;</span>
+        <h2>Student Profile</h2>
+
+        <div class="profile_img">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCA5xl6NzSgdIa4cqsFYRciby2bJ5JTYTXD7YU1fgBUFDvKYEAWEStcJSWjBaIApD9MjY&usqp=CAU" alt="Student Photo">
+        </div>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td>Name:</td>
+                    <td><span>Sahil Sharma</span></td>
+                </tr>
+
+                <tr></tr>
+                    <td>Father Name:</td>
+                    <td><span>Shri. Satyawan Sharma</span></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><span>sahil.2209301036@gmail.com</span></td>
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td><span>+91 7056100259</span></td>
+                </tr>
+                <tr>
+                    <td>Course:</td>
+                    <td><span>Bachelor of Computer Applications (BCA)</span></td>
+                </tr>
+                <tr></tr>
+                    <td>Rollno:</td>
+                    <td><span>2209301036</span></td>
+                </tr>
+                <tr>
+                    <td>Enrollment No:</td>
+                    <td><span>GU1234567</span></td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td><span>Panipat, Haryana</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+  
+       
+    <div id="editProfile" class="model"></div>
+  
+        <div class="model-content">
+            <span class="close" onclick="closeEditProfile()">&times;</span>
+            <h2>Edit Profile</h2>
+            <form id="editProfileForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" value="Sahil Sharma">
+
+                <label for="fatherName">Father's Name:</label>
+                <input type="text" id="fatherName" value="Shri. Satyawan Sharma">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" value="sahil.2209301036@gmail.com">
+
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" value="+91 7056100259">
+
+                <label for="address">Address:</label>
+                <input type="text" id="address" value="Panipat, Haryana">
+
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+   
+        
+    <script>
+
+        function showTimetable() {
+            document.getElementById("timetable").style.display = "block";
+        }
+
+        function closeTimetable() {
+            document.getElementById("timetable").style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            var modal = document.getElementById("timetable");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function showprofile() {
+            document.getElementById("profile").style.display = "block";
+        }
+
+        function closeProfile() {
+            document.getElementById("profile").style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            var modal = document.getElementById("profile");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function openEditProfile() {
+            document.getElementById("editProfile").style.display = "block";
+        }
+    
+        function closeEditProfile() {
+            document.getElementById("editProfile").style.display = "none";
+        }
+         
+    </script>
+</body>
+
+</html>

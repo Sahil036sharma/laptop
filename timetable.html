@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Window</title>
+    <style>
+        /* CSS styles from your original code */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container, .contain {
+            text-align: center;
+            margin: 30px auto;
+        }
+
+        /* Profile circle styling */
+        .profile-circle {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 50%;
+            border: 3px solid white;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            cursor: pointer;
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profilebutton, .profile-btn {
+            background-color: white;
+            color: #4CAF50;
+            border: 2px solid #4CAF50;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .profilebutton:hover, .profile-btn:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Modal styling */
+        .model {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .model-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            width: 50%;
+            border-radius: 10px;
+        }
+
+        .close {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .close:hover {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="profile-circle" onclick="toggleDropdown()">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCA5xl6NzSgdIa4cqsFYRciby2bJ5JTYTXD7YU1fgBUFDvKYEAWEStcJSWjBaIApD9MjY&usqp=CAU" alt="Profile">
+        </div>
+        <h2>Student Details</h2>
+        <div>
+            <button class="profilebutton" onclick="showProfile()">Profile</button>
+            <button class="profile-btn" onclick="openEditProfile()">Edit Profile</button>
+        </div>
+    </div>
+
+    <div class="contain">
+        <ul>
+            <li><button onclick="navigateTo('Dashboard')">Dashboard</button></li>
+            <li><button onclick="navigateTo('Feedback')">Feedback</button></li>
+            <li><button onclick="navigateTo('Fees')">Fees</button></li>
+            <!-- Add other navigation buttons here -->
+        </ul>
+    </div>
+
+    <!-- Timetable Modal -->
+    <div id="timetable" class="model">
+        <div class="model-content">
+            <span class="close" onclick="closeModal('timetable')">&times;</span>
+            <h2>BCA 5th sem Time Table</h2>
+            <!-- Table structure here -->
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profile" class="model">
+        <div class="model-content">
+            <span class="close" onclick="closeModal('profile')">&times;</span>
+            <h2>Student Profile</h2>
+            <p>Name: Sahil Sharma</p>
+            <p>Email: sahil.2209301036@gmail.com</p>
+            <p>Phone: +91 7056100259</p>
+            <!-- Additional profile details -->
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfile" class="model">
+        <div class="model-content">
+            <span class="close" onclick="closeModal('editProfile')">&times;</span>
+            <h2>Edit Profile</h2>
+            <form id="editProfileForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" value="Sahil Sharma">
+                <label for="email">Email:</label>
+                <input type="email" id="email" value="sahil.2209301036@gmail.com">
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" value="+91 7056100259">
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Function to show profile modal
+        function showProfile() {
+            document.getElementById('profile').style.display = 'block';
+        }
+
+        // Function to open edit profile modal
+        function openEditProfile() {
+            document.getElementById('editProfile').style.display = 'block';
+        }
+
+        // Function to close modals
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Close modal on clicking outside the modal
+        window.onclick = function (event) {
+            const modals = ['profile', 'editProfile', 'timetable'];
+            modals.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+
+        function navigateTo(section) {
+            alert('Navigating to ' + section);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login with CAPTCHA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .login-container {
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .captcha-box {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 18px;
+            letter-spacing: 3px;
+            font-weight: bold;
+            color: #333;
+            background-color: #eee;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            user-select: none;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+
+            <div class="captcha-box" id="captcha-display"></div>
+            <input type="text" id="captcha-input" placeholder="Enter CAPTCHA" required>
+            
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        // Generate random CAPTCHA
+        function generateCaptcha() {
+            const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            let captcha = "";
+            for (let i = 0; i < 6; i++) {
+                captcha += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return captcha;
+        }
+
+        // Update CAPTCHA on page load
+        const captchaDisplay = document.getElementById("captcha-display");
+        let currentCaptcha = generateCaptcha();
+        captchaDisplay.textContent = currentCaptcha;
+
+        // Form submission handler
+        const form = document.getElementById("login-form");
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const userInput = document.getElementById("captcha-input").value;
+
+            if (userInput === currentCaptcha) {
+                alert("Login successful!");
+            } else {
+                alert("Incorrect CAPTCHA. Please try again.");
+                currentCaptcha = generateCaptcha();
+                captchaDisplay.textContent = currentCaptcha;
+                document.getElementById("captcha-input").value = "";
+            }
+        });
+    </script>
+</body>
+</html>

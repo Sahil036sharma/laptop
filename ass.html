@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1{
+            text-align: center;
+            background-color: #4caf50;
+            border-radius: 50px;
+            font-size: 40px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .course-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 30%;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: whitesmoke;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .course-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .course-info {
+            margin-bottom: 10px;
+        }
+        .progress {
+            margin: 20px 0;
+            height: 5px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            position: relative;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: #4caf50;
+            border-radius: 5px;
+        }
+        .view-detail {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .view-detail a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .view-detail a:hover {
+            text-decoration: underline;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <h1>Courses</h1>
+    <div class="container">
+    
+        <div class="course-card">
+            <div class="status">Not Started</div>
+            <div class="course-title">Data Analyst - Black Belt (VS3543)</div>
+            <div class="course-info">Skill Enhancement</div>
+            <div class="course-info"><strong>Type:</strong> Vocational Skills</div>
+            <div class="course-info"><strong>No of Lectures:</strong> 50</div>
+            <div class="course-info"><strong>Teacher:</strong> Ms. Prachi Miglani</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="view-detail">
+                <a href="#">View Detail >></a>
+            </div>
+        </div>
+
+       
+        <div class="course-card">
+            <div class="status">Not Started</div>
+            <div class="course-title">General Proficiency (GP3501)</div>
+            <div class="course-info">General Proficiency</div>
+            <div class="course-info"><strong>Type:</strong> General Proficiency</div>
+            <div class="course-info"><strong>No of Lectures:</strong> 1</div>
+            <div class="course-info"><strong>Teacher:</strong> Dr. Anil Kumar Lamba</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="view-detail">
+                <a href="#">View Detail >></a>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <div class="status">Not Started</div>
+            <div class="course-title">Back End Development (CA3501)</div>
+            <div class="course-info">Core</div>
+            <div class="course-info"><strong>Type:</strong> Theory</div>
+            <div class="course-info"><strong>No of Lectures:</strong> 60</div>
+            <div class="course-info"><strong>Teacher:</strong> Mr. Shubham</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="view-detail">
+                <a href="#">View Detail >></a>
+            </div>
+        </div>
+        
+
+        <div class="course-card">
+            <div class="status">Not Started</div>
+            <div class="course-title">Data Structures & Algorithm (CA3502 / CA3304)</div>
+            <div class="course-info">Core</div>
+            <div class="course-info"><strong>Type:</strong> Theory</div>
+            <div class="course-info"><strong>No of Lectures:</strong> 60</div>
+            <div class="course-info"><strong>Teacher:</strong> Mr. Md Rafeeq</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="view-detail">
+                <a href="#">View Detail >></a>
+            </div>
+        </div>
+
+       
+        <div class="course-card">
+            <div class="status">Not Started</div>
+            <div class="course-title">Back End Development Lab(CA3540)</div>
+            <div class="course-info">Core</div>
+            <div class="course-info"><strong>Type:</strong>Practical</div>
+            <div class="course-info"><strong>No of Lectures:</strong> 60</div>
+            <div class="course-info"><strong>Teacher:</strong> Mr. Shubham</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="view-detail">
+                <a href="#">View Detail >></a>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <div class="status">Not Started</div>
+            <div class="course-title">Data Structures & Algorithm Lab (CA3541 / CA3343)</div>
+            <div class="course-info">Core</div>
+            <div class="course-info"><strong>Type:</strong> Practical</div>
+            <div class="course-info"><strong>No of Lectures:</strong> 60</div>
+            <div class="course-info"><strong>Teacher:</strong> Mr. Rafeeq</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="view-detail">
+                <a href="#">View Detail >></a>
+            </div>
+        </div>
+         
+
+        <div class="course-card">
+            <div class="status">Not Started</div>
+            <div class="course-title">Internship- II (CA3572)</div>
+            <div class="course-info">Core Elective</div>
+            <div class="course-info"><strong>Type:</strong> Industrial Project / Internship</div>
+            <div class="course-info"><strong>No of Lectures:</strong> 60</div>
+            <div class="course-info"><strong>Teacher:</strong> Mr. Md Aslam</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="view-detail">
+                <a href="#">View Detail >></a>
+            </div>
+        </div>
+
+       
+        <div class="course-card">
+            <div class="status">Not Started</div>
+            <div class="course-title">Communication Skills - V (SE3503)</div>
+            <div class="course-info">Skill Enhancement/div>
+            <div class="course-info"><strong>Type:</strong>Soft Skills /Aptitude</div>
+            <div class="course-info"><strong>No of Lectures:</strong>60</div>
+            <div class="course-info"><strong>Teacher:</strong>Ms. Vandana Singh</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="view-detail">
+                <a href="#">View Detail >></a>
+            </div>
+        </div>
+
+        
+        </div>
+        <div class="course-card">
+            <div class="status">Not Started</div>
+            <div class="course-title">Minor Project-I(CA3570)</div>
+            <div class="course-info">Core Elective</div>
+            <div class="course-info"><strong>Type:</strong>Practical</div>
+            <div class="course-info"><strong>No of Lectures:</strong> 60</div>
+            <div class="course-info"><strong>Teacher:</strong> Ms. Aarti</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="view-detail">
+                <a href="#">View Detail ></a>
+            </div>
+    </div>
+
+</body>
+</html>
