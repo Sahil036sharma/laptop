@@ -1,0 +1,4 @@
+*cd "c:\Users\HP\OneDrive\Pictures\Screenshots\game content\.vscode\" ; if ($?) { g++ inheritance.cpp -o inheritance } ; if ($?) { .\inheritance }*cd "c:\Users\HP\OneDrive\Pictures\Screenshots\game content\.vscode\" ; if ($?) { g++ inheritance.cpp -o inheritance } ; if ($?) { .\inheritance }*cd "c:\Users\HP\OneDrive\Pictures\Screenshots\game content\.vscode\" ; if ($?) { g++ inheritance.cpp -o inheritance } ; if ($?) { .\inheritance }
+*sahil sharma*700546*sahil@036gmail.com
+*200400*sahil@036
+*cd "c:\Users\HP\OneDrive\Pictures\Screenshots\game content\.vscode\" ; if ($?) { g++ inheritance.cpp -o inheritance } ; if ($?) { .\inheritance }*cd "c:\Users\HP\OneDrive\Pictures\Screenshots\game content\.vscode\" ; if ($?) { g++ inheritance.cpp -o inheritance } ; if ($?) { .\inheritance }

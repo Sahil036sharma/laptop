@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Page</title>
@@ -17,8 +16,8 @@
     }
 
     .login-box {
-      width: 320px;
-      height: 450px;
+      width: 480px;
+      height: 700px;
       background-color: #fff;
       color: #000;
       position: absolute;
@@ -33,37 +32,39 @@
       text-align: center;
       font-size: 32px;
       margin-bottom: 30px;
+      font-style: italic;
     }
 
     .login-box form {
       display: flex;
       flex-direction: column;
     }
-    .inputbox ion-icon{
-    position: absolute;
-    right: 8px;
-    color: #fff;
-    font-size: 1.2em;
-    top: 20px;
-    align-items: right; 
-  }
 
     .login-box form p {
+      font-style: italic;
       font-size: 18px;
       margin-bottom: 10px;
     }
 
     .login-box form input[type="text"],
-    .login-box form input[type="password"] {
+    .login-box form input[type="password"]
+    {
       padding: 10px;
       border: none;
       border-bottom: 1px solid #000;
       margin-bottom: 20px;
       font-size: 18px;
     }
+    .login-box form input[name="email"]{
+      padding: 10px;
+      border:none;
+      border-bottom: 1px solid black;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
 
     .login-box form input[type="submit"] {
-      background-color: blue;
+      background-color: #000;
       color: #fff;
       padding: 10px;
       border: none;
@@ -74,13 +75,13 @@
     }
 
     .login-box form input[type="submit"]:hover {
-      background-color: #fff;
-      color:red;
+      background-color: blue;
+      color: #000;
     }
 
     .login-box form a {
       text-decoration: none;
-      color:blue;
+      color: #000;
       font-size: 16px;
       text-align: center;
     }
@@ -114,56 +115,33 @@
 
 <body>
   <div class="login-box">
-    <h2>Login </h2>
+    <h2>Sign up</h2>
     <form>
+      <p>First name</p>
+      <input type="text" name="first_name" placeholder="Enter First name" required maxlength="15">
+      <p>Last name</p>
+      <input type="text" name="last_name" placeholder="Enter Last name" required maxlength="15">
       <p>Username</p>
-      <ion-icon name="mail-outline"></ion-icon>
-      <input type="text" name=" Email" placeholder=" Enter Email" required maxlength="15">
-     
+      <input type="text" name="username" placeholder="Enter Username" required maxlength="15">
+      <p>Email</p>
+      <input type="'email" name="email" placeholder="Enter Email" required>
       <p>Password</p>
-      <ion-icon name="lock-closed-outline"></ion-icon>
-      <input type="password" name="" placeholder="Enter Password" required maxlength="8">
-      <input type="submit" name="" value="Login">
-
-
-      <a href="https://www.google.com/search?q=www.google.com&oq=www&aqs=chrome.
-      2.69i57j0i271l3j69i60.3972j0j15&sourceid=chrome&ie=UTF-8">Try it to another</a>
-      <br>
-      <br>
-      <a href="password.html">Forgot Password</a>
-      
-      <a href="signup.html">New to Sign up</a>
-      
+      <input type="password" name="passwword" placeholder="Enter Password" required maxlength="8">
+      <input type="submit" value="Signup">
     </form>
-  </div>
-  <script>
-    // Get form elements
-    const form = document.querySelector('form');
+    <script>
+         const form = document.querySelector('form');
     const usernameInput = form.querySelector('input[type="text"]');
-    const passwordInput = form.querySelector('input[type="password"]');
-    const submitButton = form.querySelector('input[type="submit"]');
-
     // Add event listener to form submit
     form.addEventListener('submit', function (event) {
       // Prevent form submission
       event.preventDefault();
-
-      // Check if username and password inputs are not empty
-      if (usernameInput.value.trim() === '' || passwordInput.value.trim() === '') {
-        alert('Please enter a username and password.');
+      // Check if username a avilable
+      if (usernameInput.value.trim() === usernameInput.value.avilable()){
+        alert('Please enter another  username ');
       }
-      //check incorect user name and password 
-      else if (usernameInput.value.trim() !== usernameInput || passwordInput.value.trim() !== passwordInput) {
-        alert('Enter Correct Passwad or Username');
-      }
-      else {
-        form.submit();
-      }
-
     });
-  </script>
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    </script>
+  </div>
 </body>
-
 </html>
